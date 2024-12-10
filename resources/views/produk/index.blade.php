@@ -58,7 +58,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $product['ProductName'] }}</td>
                                             <td>{{ $product['Descrition'] }}</td>
-                                            <td>Rp {{ number_format($product['Pricce']) }}</td>
+                                            <td>Rp {{ number_format($product['Price']) }}</td>
                                             <td>Rp {{ number_format($product['Stock']) }}</td>
                                             <td>
                                                 <img src="{{ $product->foto ? url('image/' . $product->foto) : url('image/nophoto.jpg') }}" 
