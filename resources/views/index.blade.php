@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FoodMart - Free eCommerce Grocery Store HTML Website Template</title>
+    <title>Marketplace Pengrajin Lokal</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -3362,7 +3362,8 @@
                 </div>
                 <div class="col-md-6 credit-link text-start text-md-end">
                     <p>Free HTML Template by <a href="https://templatesjungle.com/">TemplatesJungle</a> Distributed by
-                        <a href="https://themewagon">ThemeWagon</a></p>
+                        <a href="https://themewagon">ThemeWagon</a>
+                    </p>
                 </div>
             </div>
         </div>
