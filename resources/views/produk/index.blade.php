@@ -16,11 +16,11 @@
                                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.show') }}">
                                     <i class="fas fa-user me-2"></i>Profile
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -56,10 +56,10 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $product->nama }}</td>
-                                            <td>{{ $product->jenis }}</td>
-                                            <td>Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
-                                            <td>Rp {{ number_format($product->harga_beli, 0, ',', '.') }}</td>
+                                            <td>{{ $product['ProductName'] }}</td>
+                                            <td>{{ $product['Descrition'] }}</td>
+                                            <td>Rp {{ number_format($product['Pricce']) }}</td>
+                                            <td>Rp {{ number_format($product['Stock']) }}</td>
                                             <td>
                                                 <img src="{{ $product->foto ? url('image/' . $product->foto) : url('image/nophoto.jpg') }}" 
                                                      class="img-fluid rounded shadow-sm" style="width: 60px; height: auto;">
