@@ -177,15 +177,21 @@
                         <div class="col-md-4 d-none d-md-block">
                             <select class="form-select border-0 bg-transparent">
                                 <option>All Categories</option>
-                                <option>Groceries</option>
-                                <option>Drinks</option>
-                                <option>Chocolates</option>
+                                <option>Anyaman</option>
+                                <option>Kayu</option>
+                                <option>Kulit</option>
+                                <option>Tekstil</option>
+                                <option>Logam</option>
+                                <option>Kaca dan Keramik</option>
+                                <option>Manik-Manik</option>
+                                <option>Kuliner</option>
+                                <option>Batu</option>
                             </select>
                         </div>
                         <div class="col-11 col-md-7">
                             <form id="search-form" class="text-center" action="index.html" method="post">
                                 <input type="text" class="form-control border-0 bg-transparent"
-                                    placeholder="Search for more than 20,000 products" />
+                                    placeholder="Search for products....." />
                             </form>
                         </div>
                         <div class="col-1">
@@ -201,8 +207,8 @@
                 <div
                     class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
                     <div class="support-box text-end d-none d-xl-block">
-                        <span class="fs-6 text-muted">For Support?</span>
-                        <h5 class="mb-0">+980-34984089</h5>
+                      
+
                     </div>
 
                     <ul class="d-flex justify-content-end list-unstyled m-0">
@@ -271,52 +277,49 @@
 
                                 <select class="filter-categories border-0 mb-0 me-5">
                                     <option>Shop by Departments</option>
-                                    <option>Groceries</option>
-                                    <option>Drinks</option>
-                                    <option>Chocolates</option>
+                                    <option>Anyaman</option>
+                                    <option>Kayu</option>
+                                    <option>Kulit</option>
+                                    <option>Tekstil</option>
+                                    <option>Logam</option>
+                                    <option>Kaca dan Keramik</option>
+                                    <option>Manik-Manik</option>
+                                    <option>Batu</option>
                                 </select>
 
                                 <ul
                                     class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
                                     <li class="nav-item active">
-                                        <a href="#women" class="nav-link">Women</a>
+                                        <a href="#Batu" class="nav-link">Batu</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="#men" class="nav-link">Men</a>
+                                        <a href="#men" class="nav-link">Anyaman</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#kids" class="nav-link">Kids</a>
+                                        <a href="#kids" class="nav-link">Kayu</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#accessories" class="nav-link">Accessories</a>
+                                        <a href="#Kulit" class="nav-link">Kulit</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" role="button" id="pages"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                            data-bs-toggle="dropdown" aria-expanded="false">Tekstil</a>
                                         <ul class="dropdown-menu" aria-labelledby="pages">
-                                            <li><a href="index.html" class="dropdown-item">About Us </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Shop </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Single Product </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Cart </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Checkout </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Blog </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Single Post </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Styles </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Contact </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Thank You </a></li>
-                                            <li><a href="index.html" class="dropdown-item">My Account </a></li>
-                                            <li><a href="index.html" class="dropdown-item">404 Error </a></li>
+                                            <li><a href="index.html" class="dropdown-item">Batik </a></li>
+                                            <li><a href="index.html" class="dropdown-item">Gorden dan Tirai </a></li>
+                                            <li><a href="index.html" class="dropdown-item">Sarung </a></li>
+                                            <li><a href="index.html" class="dropdown-item">Sarung Bantal dan Sprei </a></li>
+                                            <li><a href="index.html" class="dropdown-item">Taplak Meja </a></li>
+                                          
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#brand" class="nav-link">Brand</a>
+                                        <a href="#Logam" class="nav-link">Logam</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#sale" class="nav-link">Sale</a>
+                                        <a href="#Manik-Manik" class="nav-link">Manik-Manik</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="#blog" class="nav-link">Blog</a>
-                                    </li>
+
                                 </ul>
 
                             </div>
@@ -352,7 +355,7 @@
                                                     Now</a>
                                             </div>
                                             <div class="img-wrapper col-md-5">
-                                                <img src="images/product-thumb-1.png" class="img-fluid">
+                                                <img src="images/anyaman.png" class="img-fluid h-100">
                                             </div>
                                         </div>
                                     </div>
@@ -368,7 +371,7 @@
                                                     class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">Shop
                                                     Collection</a>
                                             </div>
-                                            <div class="img-wrapper col-md-5">
+                                            <div class="img-wrapper col-md-1">
                                                 <img src="images/product-thumb-1.png" class="img-fluid">
                                             </div>
                                         </div>
