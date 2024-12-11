@@ -46,49 +46,50 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>Category</th>
-                                        <th>Selling Price</th>
-                                        <th>Purchase Price</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
                                         <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($products as $product)
+                                        {{-- @dd($product); // Check the structure of each product --}}
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $product['ProductName'] }}</td>
-                                            <td>{{ $product['Descrition'] }}</td>
-                                            <td>Rp {{ number_format($product['Price']) }}</td>
-                                            <td>Rp {{ number_format($product['Stock']) }}</td>
+                                            <td>{{ $product["productName"] ?? 'N/A'}}</td>
+                                            <td>{{ $product['category'] ?? 'N/A'}}</td>
+                                            <td>Rp {{ number_format($product['price']?? 0, 2) }}</td>
+                                            <td>{{ $product['productDesc'] ?? 'N/A' }}</td>
                                             <td>
-                                                <img src="{{ $product->foto ? url('image/' . $product->foto) : url('image/nophoto.jpg') }}" 
+                                                <img src="{{ $product['productImg'] ? url('image/' . $product['productImg']) : url('image/nophoto.jpg') }}" 
                                                      class="img-fluid rounded shadow-sm" style="width: 60px; height: auto;">
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('index.edit', $product->id) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('index.edit', $product['productId']) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product->id }}">
+                                                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product['productId'] }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>
                                         <!-- Delete Confirmation Modal -->
-                                        <div class="modal fade" id="deleteModal{{ $product->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product->id }}" aria-hidden="true">
+                                        {{-- <div class="modal fade" id="deleteModal{{ $product['productId'] }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product['productId'] }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-danger text-white">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ $product->id }}">Delete Confirmation</h5>
+                                                        <h5 class="modal-title" id="deleteModalLabel{{ $product['productId'] }}">Delete Confirmation</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p class="text-center">Are you sure you want to delete <strong>{{ $product->nama }}</strong>?</p>
+                                                        <p class="text-center">Are you sure you want to delete <strong>{{ $product['productName'] }}</strong>?</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        <form action="{{ route('index.destroy', $product->id) }}" method="POST">
+                                                        <form action="{{ route('index.destroy', $product['productId']) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Yes, Delete</button>
@@ -96,7 +97,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @endforeach
                                 </tbody>
                             </table>

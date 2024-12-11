@@ -22,5 +22,6 @@ class ProductController extends Controller
 
         // Pass products to the view
         return view('produk.index', compact('products'));
+        // dd($response->body());
     }
 }
