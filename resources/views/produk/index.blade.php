@@ -46,8 +46,8 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>Category</th>
-                                        <th>Selling Price</th>
-                                        <th>Purchase Price</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
                                         <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
@@ -58,23 +58,23 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $product["productName"] ?? 'N/A'}}</td>
-                                            <td>{{ $product['description'] ?? 'N/A'}}</td>
+                                            <td>{{ $product['category'] ?? 'N/A'}}</td>
                                             <td>Rp {{ number_format($product['price']?? 0, 2) }}</td>
-                                            <td>Rp {{ number_format($product['stock'] ?? 0) }}</td>
-                                            {{-- <td>
-                                                <img src="{{ $product->foto ? url('image/' . $product->foto) : url('image/nophoto.jpg') }}" 
+                                            <td>{{ $product['productDesc'] ?? 'N/A' }}</td>
+                                            <td>
+                                                <img src="{{ $product['productImg'] ? url('image/' . $product['productImg']) : url('image/nophoto.jpg') }}" 
                                                      class="img-fluid rounded shadow-sm" style="width: 60px; height: auto;">
-                                            </td> --}}
-                                            {{-- <td>
+                                            </td>
+                                            <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('index.edit', $product['productId'] ??) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('index.edit', $product['productId']) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product['productId'] }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                         <!-- Delete Confirmation Modal -->
                                         {{-- <div class="modal fade" id="deleteModal{{ $product['productId'] }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product['productId'] }}" aria-hidden="true">
