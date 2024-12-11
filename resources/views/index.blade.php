@@ -167,7 +167,7 @@
                 <div class="col-sm-4 col-lg-3 text-center text-sm-start">
                     <div class="main-logo">
                         <a href="index.html">
-                            <img src="images/logo.png" alt="logo" class="img-fluid">
+                            <img src="images/logo2.png" alt="logo" class="img-fluid w-75">
                         </a>
                     </div>
                 </div>
@@ -347,9 +347,8 @@
                                         <div class="row banner-content p-5">
                                             <div class="content-wrapper col-md-7">
                                                 <div class="categories my-3">100% natural</div>
-                                                <h3 class="display-4">Fresh Smoothie & Summer Juice</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim
-                                                    massa diam elementum.</p>
+                                                <h3 class="display-4">Tas Anyaman</h3>
+                                                <p>Tas Anyaman: Karya Seni yang Bisa Anda Bawa Kemanapun Anda Berada.</p>
                                                 <a href="#"
                                                     class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop
                                                     Now</a>
@@ -3214,7 +3213,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer-menu">
-                        <img src="images/logo.png" alt="logo">
+                        <img src="images/logo2.png" alt="logo" class="w-75 h-50">
                         <div class="social-links mt-5">
                             <ul class="d-flex list-unstyled gap-2">
                                 <li>
