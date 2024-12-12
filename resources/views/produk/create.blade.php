@@ -13,47 +13,47 @@
                 <i class="fas fa-plus me-2">Add Product Data</i>
             </div>
             <div class="card-body">
-                <form action="{{ route('index.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form action="{{ route('index.post') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Product Name</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}" placeholder="Input product name">
-                        @error('nama')
+                        <label for="productName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control @error('productName') is-invalid @enderror" id="productName" name="productName" value="{{ old('productName') }}" placeholder="Input product name">
+                        @error('productName')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="jenis" class="form-label">Categories</label>
-                        <input type="text" class="form-control @error('jenis') is-invalid @enderror" id="jenis" name="jenis" value="{{ old('jenis') }}" placeholder="Input product Category">
-                        @error('jenis')
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" class="form-control @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category') }}" placeholder="Input product Category">
+                        @error('category')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="harga_jual" class="form-label">Selling Price</label>
-                        <input type="number" class="form-control @error('harga_jual') is-invalid @enderror" id="harga_jual" name="harga_jual" value="{{ old('harga_jual') }}" placeholder="Input selling price">
-                        @error('harga_jual')
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}" placeholder="Input selling price">
+                        @error('price')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{-- <div class="mb-3">
+                        <label for="productDesc" class="form-label">Description</label>
+                        <input type="text" class="form-control @error('productDesc') is-invalid @enderror" id="productDesc" name="productDesc" value="{{ old('productDesc') }}" placeholder="Input buying price">
+                        @error('productDesc')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="productDesc" class="form-label">Description</label>
+                        <textarea class="form-control @error('productDesc') is-invalid @enderror" id="productDesc" name="productDesc" rows="4" placeholder="Input product description">{{ old('productDesc') }}</textarea>
+                        @error('productDesc')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="harga_beli" class="form-label">Buying Price</label>
-                        <input type="number" class="form-control @error('harga_beli') is-invalid @enderror" id="harga_beli" name="harga_beli" value="{{ old('harga_beli') }}" placeholder="Input buying price">
-                        @error('harga_beli')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Description</label>
-                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="4" placeholder="Input product description">{{ old('deskripsi') }}</textarea>
-                        @error('deskripsi')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Product Image</label>
-                        <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto">
-                        @error('foto')
+                        <label for="productImg" class="form-label">Product Image</label>
+                        <input type="file" class="form-control @error('productImg') is-invalid @enderror" id="productImg" name="productImg">
+                        @error('productImg')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
