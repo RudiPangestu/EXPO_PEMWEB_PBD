@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         // Fetch products from the API
-        $response = Http::get('http://localhost:5058/api/Products');
+        $response = Http::get('http://localhost:8069/products');
 
         // Check if the request was successful
         if ($response->successful()) {
@@ -21,7 +21,7 @@ class ProductController extends Controller
         }
 
         // Pass products to the view
-        return view('produk.index', compact('products'));
+        return view('produk.dashboard', compact('products'));
         // dd($response->body());
     }
 }
