@@ -1,5 +1,36 @@
 @extends('layoutes.main')
-
+@push('styles')
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #4e73df;
+    }
+    .btn-brown {
+        background-color: #7c1b00;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-brown:hover {
+        background-color: #375a7f;
+        transform: translateY(-2px);
+    }
+    .btn-brown {
+        background-color: #8B4513; /* Warna coklat SaddleBrown */
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-brown:hover {
+        background-color: #A0522D; /* Warna coklat yang sedikit lebih terang */
+        transform: translateY(-2px);
+    }
+    .text-brown {
+        color: #8B4513 !important;
+    }
+</style>
+@endpush
 @section('content')
     <div class="container-fluid px-0" style="height: 100vh; display: flex; background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(49, 21, 21, 0.8) 100%), url('{{ asset('images/brownbg.jpg') }}'); background-size: cover; background-position: center;">
         <!-- Left Section -->
@@ -19,7 +50,7 @@
                             <label for="name" class="form-label">Full Name</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-user text-primary"></i>
+                                    <i class="fas fa-user text-brown" style="color: rgb(39, 19, 19)"></i>
                                 </span>
                                 <input type="text" 
                                        class="form-control border-start-0 @error('name') is-invalid @enderror" 
@@ -41,7 +72,7 @@
                             <label for="email" class="form-label">Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-envelope text-primary"></i>
+                                    <i class="fas fa-envelope text-brown" style="color: rgb(39, 19, 19);"></i>
                                 </span>
                                 <input type="email" 
                                        class="form-control border-start-0 @error('email') is-invalid @enderror" 
@@ -62,7 +93,7 @@
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-lock text-primary"></i>
+                                    <i class="fas fa-lock text-brown"style="color: rgb(39, 19, 19);"></i>
                                 </span>
                                 <input type="password" 
                                        class="form-control border-start-0 @error('password') is-invalid @enderror" 
@@ -82,7 +113,7 @@
                             <label for="password_confirmation" class="form-label">Confirm Password</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-lock text-primary"></i>
+                                    <i class="fas fa-lock text-brown"style="color: rgb(39, 19, 19);"></i>
                                 </span>
                                 <input type="password" 
                                        class="form-control border-start-0 @error('password_confirmation') is-invalid @enderror" 
@@ -99,13 +130,13 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 8px;">
-                                <i class="fas fa-user-plus me-2"></i>Sign Up
+                            <button type="submit" class="btn btn-brown btn-lg" style="border-radius: 8px;  background-color: rgb(39, 19, 19); color:white; padding: 0.8rem; font-size: 1.2rem;">
+                                <i class="fas fa-user-plus me-2"style="color: rgb(39, 19, 19);"></i>Sign Up
                             </button>
                         </div>
 
                         <div class="text-center">
-                            <p class="small text-muted">Already have an account? <a href="{{ route('login') }}" class="fw-bold text-primary">Login</a></p>
+                            <p class="small text-muted">Already have an account? <a href="{{ route('login') }}" class="fw-bold text-brown">Login</a></p>
                         </div>
                     </form>
                 </div>
@@ -116,26 +147,7 @@
     </div>
 @endsection
 
-@push('styles')
-<style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-    }
-    .form-control:focus {
-        box-shadow: none;
-        border-color: #4e73df;
-    }
-    .btn-primary {
-        background-color: #4e73df;
-        border: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .btn-primary:hover {
-        background-color: #375a7f;
-        transform: translateY(-2px);
-    }
-</style>
-@endpush
+
 
 @push('scripts')
 <script>
