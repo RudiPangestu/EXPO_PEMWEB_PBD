@@ -13,7 +13,7 @@
             <div class="card border-0 w-100" style="max-width: 400px; border-radius: 12px;">
                 <div class="card-body py-5 px-4">
                     <h3 class="fw-bold text-center mb-4">Login Account</h3>
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route("login.post" )}}">
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button type="" class="btnn" style="border-radius: 8px;  background-color: rgb(39, 19, 19); color:white; padding: 0.8rem; font-size: 1.2rem;">
+                            <button type="submit" class="btn" style="border-radius: 8px;  background-color: rgb(39, 19, 19); color:white; padding: 0.8rem; font-size: 1.2rem;">
                                 <i class="fas fa-sign-in-alt me-2"></i>Login
                             </button>
                         </div>
