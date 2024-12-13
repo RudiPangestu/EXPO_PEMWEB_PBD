@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::get("/signup", [ProductController::class, 'signup'])->name('signup');
 Route::get("/login", [ProductController::class, 'login'])->name('login');
 Route::get("/profile", [ProductController::class, 'profile'])->name('profile');
+Route::get("/landing", [ProductController::class, 'landing'])->name('landing');
 
 
 Route::get("/test", [ProductController::class, 'index']);
