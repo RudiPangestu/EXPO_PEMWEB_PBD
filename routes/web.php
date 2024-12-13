@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+Route::get("/signup", [ProductController::class, 'signup'])->name('signup');
+
+
 Route::get("/test", [ProductController::class, 'index']);
 Route::get("/dashboard", [ProductController::class, 'index'])->name('index.index');
 Route::delete('/produk/delete/{id}', [ProductController::class, 'destroy'])->name('index.destroy');

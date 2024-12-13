@@ -279,7 +279,7 @@
 
     <header>
         <div class="container-fluid">
-            <div class="row py-3 border-bottom">
+            <div class="row py-3 border-bottom align-items-center">
 
                 <div class="col-sm-4 col-lg-3 text-center text-sm-start">
                     <div class="main-logo">
@@ -368,7 +368,6 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="container-fluid">
@@ -579,7 +578,7 @@
 
                                 <div class="content-wrapper col-md-7">
                                     <div class="categories sale mb-3 pb-3 sans">15% off</div>
-                                    <h3 class="item-title serif">Wayang Kulit</h3>
+                                    <h3 class="item-title serif">Wayang <br>Kulit</h3>
                                     <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg
                                             width="24" height="24">
                                             <use xlink:href="#arrow-right"></use>
@@ -1783,7 +1782,47 @@
             </div>
         </div>
     </section>
-
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="bg-secondary py-5 my-5 rounded-5" style="background: url('images/bg-leaves-img-pattern.png') no-repeat;">
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-md-6 p-5">
+                            <div class="section-header">
+                                <h2 class="section-title display-4">Get <span class="text-primary">25% Discount</span> on your first purchase</h2>
+                            </div>
+                            <p> Manfaatkan kesempatan ini untuk mendapatkan penawaran istimewa. Belanja pertama Anda lebih hemat dengan diskon 25%. Jangan lewatkan!</p>                            </p>
+                        </div>
+                        <div class="col-md-6 p-5">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text"
+                                        class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="abc@mail.com">
+                                </div>
+                                <div class="form-check form-check-inline mb-3">
+                                    <label class="form-check-label" for="subscribe">
+                                    <input class="form-check-input" type="checkbox" id="subscribe" value="subscribe">
+                                    Subscribe to the newsletter</label>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                                </div>
+                            </form>
+                        
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
+          
+        </div>
+    </section>
     <section class="py-5 overflow-hidden">
         <div class="container-fluid">
             <div class="row">
