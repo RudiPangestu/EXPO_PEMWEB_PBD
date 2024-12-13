@@ -7,10 +7,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get("/test", [ProductController::class, 'index']);
-Route::get("/dashboard", [ProductController::class, 'index'])->name('index.index');
-Route::delete('/produk/delete/{id}', [ProductController::class, 'destroy'])->name('index.destroy');
-Route::get('/produk/create', [ProductController::class, 'createForm'])->name('index.create');
-Route::post('/produk/store', [ProductController::class, 'sendData'])->name('index.post');
-Route::get('/produk/edit/{id}', [ProductController::class, 'edit'])->name('index.edit');
-Route::put('/produk/update/{id}', [ProductController::class, 'update'])->name('index.update');
+Route::get("/dashboard", [ProductController::class, 'index'])->name('product.index');
+Route::delete('/product/delete/{id}', [ProductController::class, 'deleteData'])->name('api.destroy');
+Route::get('/product/create', [ProductController::class, 'createForm'])->name('product.create');
+Route::post('/product/store', [ProductController::class, 'sendData'])->name('api.post');
+Route::get('/product/edit/{id}', [ProductController::class, 'editForm'])->name('product.edit');
+Route::put('/product/put/{id}', [ProductController::class, 'updateData'])->name('api.put');

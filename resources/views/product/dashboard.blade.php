@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('index.index') }}">
+                                <a class="nav-link active" href="{{ route('product.index') }}">
                                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                                 </a>
                             </li>
@@ -34,7 +34,7 @@
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Product List</h5>
-                        <a href="{{ route('index.create') }}" class="btn btn-light btn-sm shadow-sm">
+                        <a href="{{ route('product.create') }}" class="btn btn-light btn-sm shadow-sm">
                             <i class="fas fa-plus me-2">Add Product</i>
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                                             </td>                                            
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('index.edit', $product['productId']) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('product.edit', $product['productId']) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product['productId'] }}">
@@ -78,7 +78,7 @@
                                             </td>
                                         </tr>
                                         <!-- Delete Confirmation Modal -->
-                                        {{-- <div class="modal fade" id="deleteModal{{ $product['productId'] }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product['productId'] }}" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal{{ $product['productId'] }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $product['productId'] }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-danger text-white">
@@ -90,7 +90,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        <form action="{{ route('index.destroy', $product['productId']) }}" method="POST">
+                                                        <form action="{{ route('api.destroy', $product['productId']) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Yes, Delete</button>
@@ -98,7 +98,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>

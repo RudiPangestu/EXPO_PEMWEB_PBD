@@ -18,12 +18,12 @@ class ProductController extends Controller
             $products = [];
         }
 
-        return view('produk.dashboard', compact('products'));
+        return view('product.dashboard', compact('products'));
     }
 
     public function createForm()
     {
-        return view('produk.create');
+        return view('product.create');
     }
 
     public function sendData(Request $request)
@@ -39,7 +39,7 @@ class ProductController extends Controller
 
         // Prepare data
         $data = [
-            "userId" => auth()->id() ?? 100000001,  
+            "userId" => auth()->user_id() ?? 100000001,  
             "productImg" => null,
             "productName" => $request->productName,
             "productDesc" => $request->productDesc,
@@ -59,7 +59,7 @@ class ProductController extends Controller
             $response = Http::post('http://localhost:8069/products', $data);
 
             if ($response->successful()) {
-                return redirect()->route('index.index')->with('success', 'Product added successfully!');
+                return redirect()->route('product.index')->with('success', 'Product added successfully!');
             } else {
                 return redirect()->back()->withErrors(['error' => 'Failed to add product: ' . $response->body()]);
             }
@@ -73,4 +73,85 @@ class ProductController extends Controller
         $path = $file->storeAs('public/images', time() . '_' . $file->getClientOriginalName());
         return 'images/' . basename($path);
     }
+
+    public function editForm($id)
+    {
+        // Use double quotes for string interpolation so $id is correctly included in the URL
+        $response = Http::get("http://localhost:8069/products/{$id}");
+
+        // Check if the API request was successful
+        if ($response->successful()) {
+            $product = $response->json(); // Decode the response JSON
+            return view('product.edit', compact('product')); // Pass the product data to the view
+        } else {
+            // Handle failure (you can redirect or return an error message)
+            return redirect()->route('product.index')->withErrors(['error' => 'Product not found']);
+        }
+    }
+
+    public function updateData(Request $request, $id)
+    {
+        // Validation
+        $request->validate([
+            'productId' => 'required|string|max:255',
+            'productName' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'productDesc' => 'required|string',
+            'productImg' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Prepare the data for the update
+        $data = [
+            "productId" => $id,
+            "userId" => 100000001,  
+            "productName" => $request->productName,
+            "productDesc" => $request->productDesc,
+            "price" => $request->price,
+            "category" => $request->category,
+            "createdAt" => base64_encode(now()->toDateTimeString()),
+        ];
+
+        // Handle file upload if a new image is provided
+        if ($request->hasFile('productImg')) {
+            // Generate a unique filename and store the image in the 'public/images' directory
+            $path = $request->file('productImg')->storeAs('images', time() . '_' . $request->file('productImg')->getClientOriginalName(), 'public');
+            $data['productImg'] = $path;
+        }
+
+        // dd($data);
+
+        // Send the update request to the API
+        try {
+            $response = Http::put("http://localhost:8069/products/{$id}", $data);    
+
+            if ($response->successful()) {
+                return redirect()->route('product.index')->with('success', 'Product updated successfully!');
+            } else {
+                return redirect()->back()->withErrors(['error' => 'Failed to update product: ' . $response->body()]);
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'An unexpected error occurred: ' . $e->getMessage()]);
+        }
+    }
+
+    public function deleteData($id)
+    {
+        try {
+            // Send DELETE request to the API with the product ID
+            $response = Http::delete("http://localhost:8069/products/{$id}");
+
+            // Check if the request was successful
+            if ($response->successful()) {
+                return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
+            } else {
+                return redirect()->route('product.index')->withErrors(['error' => 'Failed to delete product: ' . $response->body()]);
+            }
+        } catch (\Exception $e) {
+            // Handle any unexpected errors that occur
+            return redirect()->route('product.index')->withErrors(['error' => 'An unexpected error occurred: ' . $e->getMessage()]);
+        }
+    }
+
+
 }
