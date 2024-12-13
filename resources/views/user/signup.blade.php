@@ -1,101 +1,236 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nusantara Market - Daftar</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+@extends('layoutes.main')
+
+@section('content')
     <style>
         body {
-            background-color: #f4f4f4;
-            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .signup-container {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            color: white;
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card-header {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            background-image: linear-gradient(to right, #4e73df 0%, #224abe 100%);
         }
         .form-control {
-            border-radius: 25px;
-            padding: 10px 15px;
-        }
-        .btn-signup {
-            border-radius: 25px;
-            padding: 10px 20px;
-            background-color: #ffc107;
-            color: #000;
-            font-weight: bold;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
-        .btn-signup:hover {
-            background-color: #ffca28;
-            transform: translateY(-3px);
+        .form-control:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
         }
-        .decorative-element {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
+        .btn-signup {
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-signup:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .input-group {
+            transition: all 0.3s ease;
+        }
+        .input-group:focus-within {
+            transform: translateY(-2px);
         }
     </style>
-</head>
-<body>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 position-relative">
-                <!-- Decorative Elements -->
-                <div class="decorative-element" style="width: 100px; height: 100px; top: -50px; left: -50px;"></div>
-                <div class="decorative-element" style="width: 200px; height: 200px; bottom: -100px; right: -100px;"></div>
-                
-                <div class="signup-container p-5 position-relative">
-                    <div class="text-center mb-4">
-                        <h2>Bergabung di Nusantara Market</h2>
-                        <p class="text-light">Platform Produk Lokal Terbaik</p>
+    
+    <div class="container-fluid px-0" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+        <div class="row g-0 signup-container align-items-center">
+            <!-- Left Section -->
+            <div class="col-md-6 d-none d-md-block">
+                <div class="p-5 text-white text-center">
+                    <h1 class="display-4 mb-4">Create Your Account</h1>
+                    <p class="lead mb-5">
+                        Join our platform and start your journey today.
+                    </p>
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('images/Signup-Icon.png') }}" 
+                             alt="Signup Illustration" 
+                             class="img-fluid" 
+                             style="max-width: 300px; transition: transform 0.3s ease;">
                     </div>
-                    
-                    <form method="POST" action="">
-                        @csrf
-                        <div class="mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center px-4 px-md-5">
+                <div class="w-100" style="max-width: 450px;">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header text-white d-flex justify-content-between align-items-center py-3">
+                            <h4 class="mb-0">
+                                <i class="fas fa-user-plus me-2"></i> Sign Up for an Account
+                            </h4>
                         </div>
-                        
-                        <div class="mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        <div class="card-body p-5">
+                            <form method="POST" action="" class="needs-validation" novalidate>
+                                @csrf
+                                <div class="mb-4">
+                                    <label for="name" class="form-label text-muted">Full Name</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-user text-primary"></i>
+                                        </span>
+                                        <input type="text" 
+                                               class="form-control form-control-lg ps-0 @error('name') is-invalid @enderror" 
+                                               id="name" 
+                                               name="name" 
+                                               placeholder="Enter your full name" 
+                                               value="{{ old('name') }}" 
+                                               required 
+                                               autocomplete="name">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="email" class="form-label text-muted">Email Address</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-envelope text-primary"></i>
+                                        </span>
+                                        <input type="email" 
+                                               class="form-control form-control-lg ps-0 @error('email') is-invalid @enderror" 
+                                               id="email" 
+                                               name="email" 
+                                               placeholder="Enter your email" 
+                                               value="{{ old('email') }}" 
+                                               required 
+                                               autocomplete="email">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password" class="form-label text-muted">Password</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-lock text-primary"></i>
+                                        </span>
+                                        <input type="password" 
+                                               class="form-control form-control-lg ps-0 @error('password') is-invalid @enderror" 
+                                               id="password" 
+                                               name="password" 
+                                               placeholder="Create your password" 
+                                               required 
+                                               autocomplete="new-password">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password_confirmation" class="form-label text-muted">Confirm Password</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-lock text-primary"></i>
+                                        </span>
+                                        <input type="password" 
+                                               class="form-control form-control-lg ps-0 @error('password_confirmation') is-invalid @enderror" 
+                                               id="password_confirmation" 
+                                               name="password_confirmation" 
+                                               placeholder="Confirm your password" 
+                                               required 
+                                               autocomplete="new-password">
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-signup">
+                                        <i class="fas fa-user-plus me-2"></i>Sign Up
+                                    </button>
+                                </div>
+
+                                <div class="text-center">
+                                    <p class="text-muted">
+                                        Already have an account? 
+                                        <a href="" class="text-primary fw-bold">Login here</a>
+                                    </p>
+                                </div>
+                            </form>
+
+                            <div class="text-center mt-3">
+                                <a href="" class="btn btn-outline-primary">
+                                    <i class="fas fa-home me-2"></i>Home
+                                </a>
+                            </div>
                         </div>
-                        
-                        <div class="mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Password" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <input type="tel" class="form-control" name="phone" placeholder="Nomor Telepon" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <textarea class="form-control" name="address" placeholder="Alamat Lengkap" rows="3" required></textarea>
-                        </div>
-                        
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeTerm" required>
-                            <label class="form-check-label" for="agreeTerm">Saya setuju dengan syarat & ketentuan</label>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-signup">Daftar Sekarang</button>
-                        </div>
-                    </form>
-                    
-                    <div class="text-center mt-3">
-                        <p class="small">Sudah punya akun? <a href="" class="text-warning">Masuk</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@push('styles')
+<style>
+    .btn-outline-primary {
+        background-color: #fff;
+        color: #2575fc;
+        border-color: #2575fc;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+    .btn-outline-primary:hover {
+        background-color: #2575fc;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.closest('.input-group').style.transform = 'translateY(-2px)';
+            });
+            input.addEventListener('blur', function() {
+                this.closest('.input-group').style.transform = 'translateY(0)';
+            });
+        });
+
+        // Custom form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    });
+</script>
+@endpush

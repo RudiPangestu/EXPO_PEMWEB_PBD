@@ -7,8 +7,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-
 Route::get("/signup", [ProductController::class, 'signup'])->name('signup');
+Route::get("/login", [ProductController::class, 'login'])->name('login');
+Route::get("/profile", [ProductController::class, 'profile'])->name('profile');
 
 
 Route::get("/test", [ProductController::class, 'index']);
