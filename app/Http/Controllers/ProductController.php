@@ -14,7 +14,7 @@ class ProductController extends Controller
         $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
 
         // Send a GET request to the API to fetch all products
-        $response = Http::get('http://localhost:8069/products');
+        $response = Http::get('http://localhost:5058/products');
 
         // Initialize an empty array for products
         $products = [];
@@ -40,6 +40,7 @@ class ProductController extends Controller
     {
         return view('product.create');
     }
+
 
     public function sendData(Request $request)
     {
