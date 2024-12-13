@@ -15,6 +15,7 @@
             <div class="card-body">
                 <form action="{{ route('api.post') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
+                    <input type="hidden" name="userId" value="{{ $product['UserId'] }}">
                     <div class="mb-3">
                         <label for="productName" class="form-label">Product Name</label>
                         <input type="text" class="form-control @error('productName') is-invalid @enderror" id="productName" name="productName" value="{{ old('productName') }}" placeholder="Input product name">

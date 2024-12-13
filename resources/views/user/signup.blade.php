@@ -44,23 +44,23 @@
             <div class="card border-0 w-100" style="max-width: 400px; border-radius: 12px;">
                 <div class="card-body py-5 px-4">
                     <h3 class="fw-bold text-center mb-4">Sign Up for an Account</h3>
-                    <form method="POST" action="" class="needs-validation" novalidate>
+                    <form method="POST" action="{{ route("signup.post") }}" class="needs-validation" novalidate>
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
+                            <label for="username" class="form-label">Full Name</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
                                     <i class="fas fa-user text-brown" style="color: rgb(39, 19, 19)"></i>
                                 </span>
                                 <input type="text" 
-                                       class="form-control border-start-0 @error('name') is-invalid @enderror" 
-                                       id="name" 
-                                       name="name" 
+                                       class="form-control border-start-0 @error('username') is-invalid @enderror" 
+                                       id="username" 
+                                       name="username" 
                                        placeholder="Enter your full name" 
-                                       value="{{ old('name') }}" 
+                                       value="{{ old('username') }}" 
                                        required 
                                        autofocus>
-                                @error('name')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -122,6 +122,46 @@
                                        placeholder="Confirm your password" 
                                        required>
                                 @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-phone text-brown"style="color: rgb(39, 19, 19);"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control border-start-0 @error('phone') is-invalid @enderror" 
+                                       id="phone" 
+                                       name="phone" 
+                                       placeholder="Enter your phone number" 
+                                       required>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-location-arrow text-brown"style="color: rgb(39, 19, 19);"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control border-start-0 @error('address') is-invalid @enderror" 
+                                       id="address" 
+                                       name="address" 
+                                       placeholder="Enter your home address" 
+                                       required>
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -4,20 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class ProductController extends Controller
 {
     public function index()
     {
+        $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
+
+        // Send a GET request to the API to fetch all products
         $response = Http::get('http://localhost:8069/products');
 
+        // Initialize an empty array for products
+        $products = [];
+
+        // Check if the API response is successful
         if ($response->successful()) {
-            $products = $response->json();
-        } else {
-            $products = [];
+            $allProducts = $response->json(); // Get the list of products
+
+            // Filter products that match the logged-in user's ID
+            $products = array_filter($allProducts, function ($product) use ($userId) {
+                return $product['userId'] == $userId; // Adjust the key if needed to match the API response structure
+            });
+
+            // Optionally, re-index the array after filtering
+            $products = array_values($products);
         }
 
+        // Return the view with the filtered products
         return view('product.dashboard', compact('products'));
     }
 
@@ -26,19 +41,6 @@ class ProductController extends Controller
         return view('product.create');
     }
 
-    public function login()
-    {
-        return view('user.login');
-    }
-    public function profile()
-    {
-        return view('user.profile');
-    }
-
-    public function signup()
-    {
-        return view('user.signup');
-    }
     public function sendData(Request $request)
     {
         // Validation
@@ -52,7 +54,7 @@ class ProductController extends Controller
 
         // Prepare data
         $data = [
-            "userId" => auth()->user_id() ?? 100000001,  
+            "userId" => Auth::id(),  
             "productImg" => null,
             "productName" => $request->productName,
             "productDesc" => $request->productDesc,
