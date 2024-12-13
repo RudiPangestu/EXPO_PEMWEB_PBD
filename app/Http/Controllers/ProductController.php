@@ -14,7 +14,7 @@ class ProductController extends Controller
         $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
 
         // Send a GET request to the API to fetch all products
-        $response = Http::get('http://localhost:5058/products');
+        $response = Http::get('http://localhost:5058/api/Products');
 
         // Initialize an empty array for products
         $products = [];
@@ -93,7 +93,7 @@ class ProductController extends Controller
     public function editForm($id)
     {
         // Use double quotes for string interpolation so $id is correctly included in the URL
-        $response = Http::get("http://localhost:8069/products/{$id}");
+        $response = Http::get("http://localhost:5058/api/Products/{$id}");
 
         // Check if the API request was successful
         if ($response->successful()) {
@@ -139,7 +139,7 @@ class ProductController extends Controller
 
         // Send the update request to the API
         try {
-            $response = Http::put("http://localhost:8069/products/{$id}", $data);    
+            $response = Http::put("http://localhost:5058/api/Products/{$id}", $data);    
 
             if ($response->successful()) {
                 return redirect()->route('product.index')->with('success', 'Product updated successfully!');
@@ -155,7 +155,7 @@ class ProductController extends Controller
     {
         try {
             // Send DELETE request to the API with the product ID
-            $response = Http::delete("http://localhost:8069/products/{$id}");
+            $response = Http::delete("http://localhost:5058/api/Products/{$id}");
 
             // Check if the request was successful
             if ($response->successful()) {

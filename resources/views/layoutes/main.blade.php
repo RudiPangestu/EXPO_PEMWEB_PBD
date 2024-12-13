@@ -49,7 +49,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid px-4">
-            <a class="navbar-brand" href="{{ route('index.index') }}">
+            <a class="navbar-brand" href="{{ route('product.index') }}">
                 <i class="fas fa-store me-2"></i>Toko Nelson
             </a>
             <div class="d-flex align-items-center">
