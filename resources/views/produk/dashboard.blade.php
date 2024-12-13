@@ -3,40 +3,75 @@
 @section('content')
     <div class="container-fluid px-4">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Navigation</h5>
+            <!-- Dashboard Statistics -->
+            <div class="col-12 mt-4">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="card text-white bg-primary shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Total Products</h5>
+                                    <p class="card-text display-6">{{ count($products) }}</p>
+                                </div>
+                                <i class="fas fa-box-open fa-2x"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('index.index') }}">
-                                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                                </a>
-                            </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.show') }}">
-                                    <i class="fas fa-user me-2"></i>Profile
-                                </a>
-                            </li> --}}
-                        </ul>
+                    <div class="col-md-3 mb-3">
+                        <div class="card text-white bg-success shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Total Categories</h5>
+                                    <p class="card-text display-6">
+                                        {{ count(array_unique(array_column($products, 'category'))) }}
+                                    </p>
+                                </div>
+                                <i class="fas fa-tags fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card text-white bg-warning shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Highest Price</h5>
+                                    <p class="card-text display-6">
+                                        Rp {{ number_format(max(array_column($products, 'price')), 2) }}
+                                    </p>
+                                </div>
+                                <i class="fas fa-dollar-sign fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card text-white bg-info shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Recent Added</h5>
+                                    <p class="card-text display-6">{{ $products[0]['productName'] ?? 'N/A' }}</p>
+                                </div>
+                                <i class="fas fa-plus-circle fa-2x"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Main Content -->
-            <div class="col-md-9">
-                <h1 class="mt-4">Toko Nelson</h1>
-                <ol class="breadcrumb mb-4 bg-light p-2 rounded">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+
+            <!-- Product List -->
+            <div class="col-12">
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Product List</h5>
-                        <a href="{{ route('index.create') }}" class="btn btn-light btn-sm shadow-sm">
-                            <i class="fas fa-plus me-2">Add Product</i>
-                        </a>
+                        <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>Product List
+                        </h5>
+                        <div>
+                            <a href="{{ route('index.create') }}" class="btn btn-light btn-sm shadow-sm me-2">
+                                <i class="fas fa-plus me-1"></i>Add Product
+                            </a>
+                            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#filterModal">
+                                <i class="fas fa-filter me-1"></i>Filter
+                            </button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -64,9 +99,9 @@
                                             <td>
                                                 @if(!empty($product['productImg']))
                                                     <img src="{{ asset('storage/' . $product['productImg']) }}" 
-                                                         class="img-fluid rounded shadow-sm" 
-                                                         style="width: 60px; height: auto;"
-                                                         onerror="this.onerror=null; this.src='{{ asset('default-image.png') }}'">
+                                                            class="img-fluid rounded shadow-sm" 
+                                                            style="width: 60px; height: auto;"
+                                                            onerror="this.onerror=null; this.src='{{ asset('default-image.png') }}'">
                                                 @else
                                                     <span>No Image</span>
                                                 @endif
@@ -114,7 +149,111 @@
         </div>
     </div>
 
-    <!-- Initialize DataTables -->
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter Products</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productFilterForm">
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="categoryFilter">
+                                <option value="">All Categories</option>
+                                @php
+                                    $categories = array_unique(array_column($products, 'category'));
+                                @endphp
+                                @foreach($categories as $category)
+                                    <option value="{{ $category }}">{{ $category }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price Range</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="minPrice" placeholder="Min Price">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="maxPrice" placeholder="Max Price">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
+                    <button type="button" class="btn btn-outline-secondary" id="resetFilterBtn">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @push('scripts')
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable hanya SATU KALI
+            var table = $('#datatablesSimple').DataTable({
+                responsive: true,
+                paging: true,
+                ordering: true,
+                info: true,
+                autoWidth: false,
+                language: {
+                    searchPlaceholder: "Search products...",
+                    search: ""
+                }
+            });
+
+            // Apply Filter Button Click Event
+            $('#applyFilterBtn').on('click', function() {
+                // Get filter values
+                var category = $('#categoryFilter').val();
+                var minPrice = parseFloat($('#minPrice').val()) || 0;
+                var maxPrice = parseFloat($('#maxPrice').val()) || Infinity;
+
+                // Custom filtering function
+                $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+                    // Get actual price from the table (removing 'Rp' and converting to float)
+                    var price = parseFloat(data[3].replace('Rp ', '').replace(/,/g, '')) || 0;
+                    var productCategory = data[2];
+
+                    // Check category and price conditions
+                    var categoryMatch = !category || productCategory === category;
+                    var priceMatch = price >= minPrice && price <= maxPrice;
+
+                    return categoryMatch && priceMatch;
+                });
+
+                // Redraw the table with the new filter
+                table.draw();
+
+                // Clear the custom filtering
+                $.fn.dataTable.ext.search.pop();
+
+                // Close the modal
+                $('#filterModal').modal('hide');
+            });
+
+            // Reset Filter Button Click Event
+            $('#resetFilterBtn').on('click', function() {
+                // Clear all filter inputs
+                $('#categoryFilter').val('');
+                $('#minPrice').val('');
+                $('#maxPrice').val('');
+
+                // Remove any existing search and custom filters
+                $.fn.dataTable.ext.search = [];
+                table.search('').columns().search('').draw();
+            });
+        });
+    </script>
+    @endpush
+
     @push('scripts')
         <script>
             $(document).ready(function () {
@@ -124,6 +263,10 @@
                     ordering: true,
                     info: true,
                     autoWidth: false,
+                    language: {
+                        searchPlaceholder: "Search products...",
+                        search: ""
+                    }
                 });
             });
         </script>
