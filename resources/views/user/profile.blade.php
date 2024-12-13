@@ -87,12 +87,12 @@
                         </a>
                     </div>
                     <div class="card-body text-center">
-                        <img src="{{ $user->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode($user->name) }}" 
+                        <img src="" 
                              class="rounded-circle shadow-lg mb-3 profile-avatar" 
                              style="width: 180px; height: 180px; object-fit: cover;" 
                              alt="User Avatar">
-                        <h2 class="fw-bold mb-2">{{ $user->name }}</h2>
-                        <p class="text-muted mb-4">{{ $user->email }}</p>
+                        <h2 class="fw-bold mb-2"></h2>
+                        <p class="text-muted mb-4"></p>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@
                         <div class="card stat-card border-0 text-center">
                             <div class="card-body">
                                 <h6 class="text-muted mb-2">Total Products</h6>
-                                <h4 class="fw-bold text-primary">{{ $products->count() }}</h4>
+                                <h4 class="fw-bold text-primary"></h4>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                             <div class="card-body">
                                 <h6 class="text-muted mb-2">Total Product Value</h6>
                                 <h4 class="fw-bold text-success">
-                                    Rp {{ number_format($products->sum('harga_jual'), 0, ',', '.') }}
+                                    
                                 </h4>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                             <div class="card-body">
                                 <h6 class="text-muted mb-2">Unique Categories</h6>
                                 <h4 class="fw-bold text-warning">
-                                    {{ $products->unique('jenis')->count() }}
+                              
                                 </h4>
                             </div>
                         </div>
@@ -139,40 +139,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        @if($products->isEmpty())
-                            <div class="text-center py-4">
-                                <p class="text-muted">You have not added any products yet.</p>
-                            </div>
-                        @else
-                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                                @foreach($products as $product)
-                                    <div class="col">
-                                        <div class="card h-100 product-card">
-                                            <img src="{{ $product->foto ? url('image/' . $product->foto) : url('image/nophoto.jpg') }}" 
-                                                 class="card-img-top" 
-                                                 style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;" 
-                                                 alt="{{ $product->nama }}">
-                                            <div class="card-body">
-                                                <h5 class="card-title fw-bold mb-3">{{ $product->nama }}</h5>
-                                                <div class="d-flex justify-content-between mb-3">
-                                                    <span class="text-success">
-                                                        <i class="fas fa-tag me-2"></i>
-                                                        Selling: Rp {{ number_format($product->harga_jual, 0, ',', '.') }}
-                                                    </span>
-                                                    <span class="text-muted">
-                                                        <i class="fas fa-cart-plus me-2"></i>
-                                                        Cost: Rp {{ number_format($product->harga_beli, 0, ',', '.') }}
-                                                    </span>
-                                                </div>
-                                                <p class="card-text text-muted small">
-                                                    {{ Str::limit($product->deskripsi, 80) }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
+                      
                     </div>
                 </div>
             </div>
