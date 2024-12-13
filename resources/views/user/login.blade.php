@@ -1,7 +1,7 @@
 @extends('layoutes.main')
 
 @section('content')
-    <div class="container-fluid px-0" style="height: 100vh; display: flex; background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(37, 117, 252, 0.8) 100%), url('{{ asset('images/bluebg.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="container-fluid px-0" style="height: 100vh; display: flex; background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(31, 13, 13, 0.5) 100%), url('{{ asset('images/brownbg.jpg') }}'); background-size: cover; background-position: center;">
         <!-- Left Section -->
         <div class="d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 text-white" style="background: url('{{ asset('images/background-pattern.png') }}') no-repeat center/cover;">
             <h1 class="fw-bold display-4 mb-3">Welcome Back</h1>
