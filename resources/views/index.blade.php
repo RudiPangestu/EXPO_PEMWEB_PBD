@@ -23,7 +23,124 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+    <style>
+        /* Atur font default untuk seluruh dokumen */
+        body {
+            font-family: 'Nunito', sans-serif; /* Mengganti default font Bootstrap */
+        }
+        
+        /* Font untuk elemen khusus */
+        .sans {
+            font-family: 'Open Sans', sans-serif; /* Untuk Open Sans */
+        }
+        
+        .serif {
+            font-family: 'Georgia', serif; /* Contoh font serif */
+        }
+        select.form-select {
+            white-space: nowrap; /* Mencegah teks terpotong menjadi baris baru */
+            width: auto;         /* Menyesuaikan lebar dropdown dengan panjang teks */
+            min-width: 50px;    /* Memberikan lebar minimum */
+        }
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            flex-wrap: wrap;
+        }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            padding: 10px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        #expand-tekstil .nav-link i {
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+
+        #expand-tekstil .nav-link.active i {
+            transform: rotate(90deg);
+        }
+
+        .textile-sub-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .textile-sub-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            padding: 10px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        #expand-tekstil .nav-link i {
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+
+        #expand-tekstil .nav-link.active i {
+            transform: rotate(90deg);
+        }
+
+        .textile-sub-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .textile-sub-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .offcanvas-body {
+            transition: margin-left 0.3s ease;
+        }
+        .category-item img {
+            max-width: 100%; /* Agar gambar tidak melebihi ukuran kontainer */
+            max-height: 100px; /* Batasi tinggi maksimum ikon */
+            width: auto; /* Pertahankan aspek rasio */
+            height: auto; /* Pertahankan aspek rasio */
+            display: block; /* Hilangkan spasi ekstra */
+            margin: 0 auto; /* Tengah gambar jika perlu */
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        </style>
+        
 </head>
 
 <body>
@@ -173,37 +290,36 @@
                 </div>
 
                 <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5 d-none d-lg-block">
-                    <div class="search-bar row bg-light p-2 my-2 rounded-4">
-                        <div class="col-md-4 d-none d-md-block">
+                    <div class="search-bar row bg-light p-2 my-2 rounded-4 align-items-center">
+                        <div class="col-md-5 d-none d-md-block mr-1">
                             <select class="form-select border-0 bg-transparent">
                                 <option>All Categories</option>
+                                <option>Snack</option>
+                                <option>Alat Musik</option>
                                 <option>Anyaman</option>
                                 <option>Kayu</option>
                                 <option>Kulit</option>
                                 <option>Tekstil</option>
                                 <option>Logam</option>
-                                <option>Kaca dan Keramik</option>
-                                <option>Manik-Manik</option>
-                                <option>Kuliner</option>
-                                <option>Batu</option>
+                                <option>Tanah Liat</option>
+                                <option>Lainnya</option>
                             </select>
                         </div>
-                        <div class="col-11 col-md-7">
-                            <form id="search-form" class="text-center" action="index.html" method="post">
+                        <div class="col-md-7 d-flex align-items-center">
+                            <form id="search-form" class="w-100 d-flex" action="index.html" method="post">
                                 <input type="text" class="form-control border-0 bg-transparent"
                                     placeholder="Search for products....." />
+                                <button type="submit" class="btn border-0 bg-transparent p-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+                                    </svg>
+                                </button>
                             </form>
-                        </div>
-                        <div class="col-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-                            </svg>
                         </div>
                     </div>
                 </div>
-
+                
                 <div
                     class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
                     <div class="support-box text-end d-none d-xl-block">
@@ -273,58 +389,102 @@
                                     aria-label="Close"></button>
                             </div>
 
-                            <div class="offcanvas-body">
-
-                                {{-- <select class="filter-categories border-0 mb-0 me-5">
-                                    <option>Shop by Departments</option>
-                                    <option>Anyaman</option>
-                                    <option>Kayu</option>
-                                    <option>Kulit</option>
-                                    <option>Tekstil</option>
-                                    <option>Logam</option>
-                                    <option>Kaca dan Keramik</option>
-                                    <option>Manik-Manik</option>
-                                    <option>Batu</option>
-                                </select> --}}
-
-                                <ul
-                                    class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
+                            <div class="offcanvas-body" id="offcanvas-body" style="width:100%;margin-left:65%;margin-right:auto;">
+                                <ul id="menu-list" class="navbar-nav menu-list tengah gap-md-3 mb-0">
                                     <li class="nav-item active">
-                                        <a href="#Batu" class="nav-link">Batu</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="#men" class="nav-link">Anyaman</a>
+                                        <a href="#Batu" class="nav-link">Snack</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#kids" class="nav-link">Kayu</a>
+                                        <a href="#men" class="nav-link">Alat Musik</a>
+                                    </li>
+                                    <li id="expand-tekstil" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button">
+                                            Kerajinan <i class="fas fa-chevron-right"></i>
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#Kulit" class="nav-link">Kulit</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" role="button" id="pages"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Tekstil</a>
-                                        <ul class="dropdown-menu" aria-labelledby="pages">
-                                            <li><a href="index.html" class="dropdown-item">Batik </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Gorden dan Tirai </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Sarung </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Sarung Bantal dan Sprei </a></li>
-                                            <li><a href="index.html" class="dropdown-item">Taplak Meja </a></li>
-                                          
-                                        </ul>
+                                        <a href="#Logam" class="nav-link">Perfilman</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#Logam" class="nav-link">Logam</a>
+                                        <a href="#Manik-Manik" class="nav-link">Lainnya</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="#Manik-Manik" class="nav-link">Manik-Manik</a>
-                                    </li>
-
                                 </ul>
-
                             </div>
-
+                            
+                            <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const offcanvasBody = document.getElementById('offcanvas-body');
+                                const expandTekstil = document.getElementById('expand-tekstil');
+                                const menuList = document.getElementById('menu-list');
+                                const tekstilLink = expandTekstil.querySelector('.nav-link');
+                                let isExpanded = false;
+                                let isMarginChanged = false;
+                            
+                                // Daftar sub-item Kerajinan
+                                const tekstilSubItems = [
+                                    { href: "#tekstil1", text: "Anyaman" },
+                                    { href: "#tekstil2", text: "Kayu" },
+                                    { href: "#tekstil3", text: "Kulit" },
+                                    { href: "#tekstil4", text: "Tekstil" },
+                                    { href: "#tekstil5", text: "Logam" },
+                                    { href: "#tekstil6", text: "Tanah Liat" }                                                            
+                                ];
+                            
+                                expandTekstil.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                            
+                                    // Toggle margin hanya untuk nav link Kerajinan
+                                    if (!isMarginChanged) {
+                                        offcanvasBody.style.marginLeft = '5%';
+                                        isMarginChanged = true;
+                                    } else {
+                                        offcanvasBody.style.marginLeft = '65%';
+                                        isMarginChanged = false;
+                                    }
+                            
+                                    // Toggle state untuk dropdown
+                                    isExpanded = !isExpanded;
+                            
+                                    // Toggle link active state and icon rotation
+                                    tekstilLink.classList.toggle('active');
+                            
+                                    if (isExpanded) {
+                                        // Tambahkan sub-item
+                                        tekstilSubItems.forEach((item, index) => {
+                                            const newItem = document.createElement('li');
+                                            newItem.classList.add('nav-item', 'textile-sub-item');
+                            
+                                            const newLink = document.createElement('a');
+                                            newLink.href = item.href;
+                                            newLink.classList.add('nav-link');
+                                            newLink.textContent = item.text;
+                            
+                                            newItem.appendChild(newLink);
+                            
+                                            // Sisipkan setelah expand-tekstil
+                                            expandTekstil.insertAdjacentElement('afterend', newItem);
+                            
+                                            // Tambahkan kelas show dengan sedikit delay untuk animasi
+                                            setTimeout(() => {
+                                                newItem.classList.add('show');
+                                            }, 50 * (index + 1));
+                                        });
+                                    } else {
+                                        // Hapus sub-item
+                                        const subItems = document.querySelectorAll('.textile-sub-item');
+                                        subItems.forEach((item, index) => {
+                                            item.classList.remove('show');
+                                            setTimeout(() => {
+                                                item.remove();
+                                            }, 50);
+                                        });
+                                    }
+                                });
+                            });
+                            </script>
+                                                   
                         </div>
+                    </nav>    
                 </div>
             </div>
         </div>
@@ -346,15 +506,15 @@
                                     <div class="swiper-slide">
                                         <div class="row banner-content p-5">
                                             <div class="content-wrapper col-md-7">
-                                                <div class="categories my-3">100% natural</div>
-                                                <h3 class="display-4">Tas Anyaman</h3>
-                                                <p>Tas Anyaman: Karya Seni yang Bisa Anda Bawa Kemanapun Anda Berada.</p>
+                                                <div class="categories my-3 sans">Elegant & Timeless</div>
+                                                <h3 class="display-4 serif mb-3">Tas <br> Batik</h3>
+                                                <p class="sans">Tas Batik Warisan budaya dengan sentuhan modern. Cocok untuk melengkapi gaya Anda di setiap kesempatan.</p>
                                                 <a href="#"
                                                     class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop
                                                     Now</a>
                                             </div>
                                             <div class="img-wrapper col-md-5">
-                                                <img src="images/anyaman.png" class="img-fluid h-100">
+                                                <img src="images/Tas Batik.png" class="img-fluid h-100">
                                             </div>
                                         </div>
                                     </div>
@@ -362,16 +522,15 @@
                                     <div class="swiper-slide">
                                         <div class="row banner-content p-5">
                                             <div class="content-wrapper col-md-7">
-                                                <div class="categories mb-3 pb-3">100% natural</div>
-                                                <h3 class="banner-title">Fresh Smoothie & Summer Juice</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim
-                                                    massa diam elementum.</p>
+                                                <div class="categories my-3 sans">100% natural</div>
+                                                <h3 class="display-4 serif">Tas Anyaman</h3>
+                                                <p class="sans">Tas Anyaman Karya Seni yang Bisa Anda Bawa Kemanapun Anda Berada.</p>
                                                 <a href="#"
-                                                    class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">Shop
-                                                    Collection</a>
+                                                    class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop
+                                                    Now</a>
                                             </div>
-                                            <div class="img-wrapper col-md-1">
-                                                <img src="images/product-thumb-1.png" class="img-fluid">
+                                            <div class="img-wrapper col-md-5">
+                                                <img src="images/Anyaman.png" class="img-fluid h-100">
                                             </div>
                                         </div>
                                     </div>
@@ -379,16 +538,15 @@
                                     <div class="swiper-slide">
                                         <div class="row banner-content p-5">
                                             <div class="content-wrapper col-md-7">
-                                                <div class="categories mb-3 pb-3">100% natural</div>
-                                                <h3 class="banner-title">Heinz Tomato Ketchup</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim
-                                                    massa diam elementum.</p>
+                                                <div class="categories mb-3 pb-3 sans">Feel the Warmth</div>
+                                                <h3 class="banner-title serif">Gerabah Cangkir Teh</h3>
+                                                <p class="sans">Nikmati Minuman Anda dengan kehangatan cangkir gerabah berkualitas, buatan tangan pengrajin lokal.</p>
                                                 <a href="#"
                                                     class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">Shop
                                                     Collection</a>
                                             </div>
                                             <div class="img-wrapper col-md-5">
-                                                <img src="images/product-thumb-2.png" class="img-fluid">
+                                                <img src="images/Gerabah Cangkir Teh.png" class="img-fluid h-100">
                                             </div>
                                         </div>
                                     </div>
@@ -400,14 +558,13 @@
                         </div>
 
                         <div class="banner-ad bg-success-subtle block-2"
-                            style="background:url('images/ad-image-1.png') no-repeat;background-position: right bottom">
+                            style="background:url('images/Miniatur kapal pinisi.png') no-repeat right bottom; background-size: 280px;">
                             <div class="row banner-content p-5">
 
                                 <div class="content-wrapper col-md-7">
-                                    <div class="categories sale mb-3 pb-3">20% off</div>
-                                    <h3 class="banner-title">Fruits & Vegetables</h3>
-                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg
-                                            width="24" height="24">
+                                    <div class="categories sale mb-3 pb-3 sans">20% off</div>
+                                    <h3 class="banner-title serif">Miniatur Kapal</h3>
+                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
                                             <use xlink:href="#arrow-right"></use>
                                         </svg></a>
                                 </div>
@@ -415,13 +572,14 @@
                             </div>
                         </div>
 
+
                         <div class="banner-ad bg-danger block-3"
-                            style="background:url('images/ad-image-2.png') no-repeat;background-position: right bottom">
+                            style="background:url('images/Wayang kulit.png') no-repeat;background-position: right bottom; background-size: 250px;">
                             <div class="row banner-content p-5">
 
                                 <div class="content-wrapper col-md-7">
-                                    <div class="categories sale mb-3 pb-3">15% off</div>
-                                    <h3 class="item-title">Baked Products</h3>
+                                    <div class="categories sale mb-3 pb-3 sans">15% off</div>
+                                    <h3 class="item-title serif">Wayang Kulit</h3>
                                     <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg
                                             width="24" height="24">
                                             <use xlink:href="#arrow-right"></use>
@@ -464,52 +622,44 @@
                     <div class="category-carousel swiper">
                         <div class="swiper-wrapper">
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/snack.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Snack</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-bread-baguette.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Breads & Sweets</h3>
+                                <img src="images/angklung.png " alt="Category Thumbnail">
+                                <h3 class="category-title">Alat Musik</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-soft-drinks-bottle.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/ball.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Anyaman</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-wine-glass-bottle.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/wood.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Kayu</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-animal-products-drumsticks.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/wayang.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Kulit</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-bread-herb-flour.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/thread.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Tekstil</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/gold-ingot.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Logam</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/pottery.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Tanah Liat</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/movie-clapper-open.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Perfilman</h3>
                             </a>
                             <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
-                            </a>
-                            <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
-                            </a>
-                            <a href="index.html" class="nav-link category-item swiper-slide">
-                                <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
-                                <h3 class="category-title">Fruits & Veges</h3>
+                                <img src="images/more-information.png" alt="Category Thumbnail">
+                                <h3 class="category-title">Lainnya</h3>
                             </a>
 
                         </div>
@@ -1603,12 +1753,12 @@
 
                 <div class="col-md-6">
                     <div class="banner-ad bg-danger mb-3"
-                        style="background: url('images/ad-image-3.png');background-repeat: no-repeat;background-position: right bottom;">
+                        style="background: url('images/Sasando.png');background-repeat: no-repeat;background-position: right;background-size: 230px;">
                         <div class="banner-content p-5">
 
-                            <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-                            <h3 class="banner-title">Luxa Dark Chocolate</h3>
-                            <p>Very tasty & creamy vanilla flavour creamy muffins.</p>
+                            <div class="categories text-primary fs-3 fw-bold">Harmoni Nusantara</div>
+                            <h3 class="banner-title serif">Alat Musik Sasando</h3>
+                            <p>Temukan keajaiban musik asli Indonesia.</p>
                             <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
 
                         </div>
@@ -1617,12 +1767,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="banner-ad bg-info"
-                        style="background: url('images/ad-image-4.png');background-repeat: no-repeat;background-position: right bottom;">
+                        style="background: url('images/Topeng Kayu Batik.png');background-repeat: no-repeat;background-position: right;background-size: 200px;">
                         <div class="banner-content p-5">
 
-                            <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-                            <h3 class="banner-title">Creamy Muffins</h3>
-                            <p>Very tasty & creamy vanilla flavour creamy muffins.</p>
+                            <div class="categories text-primary fs-3 fw-bold">Keindahan Seni yang Abadi</div>
+                            <h3 class="banner-title serif">Topeng Kayu Batik</h3>
+                            <p>Batik budaya indonesia</p>
                             <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
 
                         </div>
@@ -2026,17 +2176,15 @@
                             <img src="images/phone.png" alt="phone" class="image-float img-fluid">
                         </div>
                         <div class="col-md-8">
-                            <h2 class="my-5">Shop faster with foodmart App</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
-                                nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
-                                semper erat ac in suspendisse iaculis. Amet blandit tortor praesent ante vitae. A, enim
-                                pretiummi senectus magna. Sagittis sed ptibus liberolectus non et psryroin.</p>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <img src="images/app-store.jpg" alt="app-store">
-                                <img src="images/google-play.jpg" alt="google-play">
-                            </div>
+                            <h2 class="my-5">Dukung Produk Lokal, Temukan Karya Terbaik Nusantara</h2>
+                            <p>Semua kebutuhan Anda dalam genggaman. Dari produk tradisional hingga inovasi modern, temukan pilihan terbaik hanya di sini."
+                                "Nikmati pengalaman belanja cepat, aman, dan mendukung pengrajin lokal di seluruh Indonesia.
+                            </p>
+                        
+                            <button class="btn btn-dark rounded-4 mt-2">Belanja Sekarang!</button>
                         </div>
                     </div>
+                    
                 </div>
             </div>
 
@@ -2058,7 +2206,7 @@
                             <div class="col-md-10">
                                 <div class="card-body p-0">
                                     <h5>Free delivery</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                                    <p class="card-text text-justify">Gratis Pengiriman ke Seluruh Indonesia <br>Belanja nyaman tanpa biaya tambahan.</p>
                                 </div>
                             </div>
                         </div>
@@ -2077,7 +2225,8 @@
                             <div class="col-md-10">
                                 <div class="card-body p-0">
                                     <h5>100% secure payment</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                                    <p class="card-text text-justify">Pembayaran 100% Aman,
+                                        Transaksi Anda terlindungi dengan sistem keamanan terpercaya.</p>
                                 </div>
                             </div>
                         </div>
@@ -2096,7 +2245,8 @@
                             <div class="col-md-10">
                                 <div class="card-body p-0">
                                     <h5>Quality guarantee</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                                    <p class="card-text text-justify">Jaminan Kualitas Terbaik,
+                                        Produk lokal berkualitas, langsung dari pengrajin terpercaya.</p>
                                 </div>
                             </div>
                         </div>
@@ -2115,7 +2265,8 @@
                             <div class="col-md-10">
                                 <div class="card-body p-0">
                                     <h5>guaranteed savings</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                                    <p class="card-text text-justify">Harga Hemat Dijamin
+                                        <br>Dapatkan penawaran terbaik setiap hari.</p>
                                 </div>
                             </div>
                         </div>
@@ -2134,7 +2285,10 @@
                             <div class="col-md-10">
                                 <div class="card-body p-0">
                                     <h5>Daily offers</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                                    <p class="card-text text-justify">Promo Baru Setiap Hari,
+                                        Temukan diskon spesial untuk produk pilihan.
+                                        
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -2289,7 +2443,6 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </footer>
