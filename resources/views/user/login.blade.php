@@ -19,7 +19,7 @@
                             <label for="email" class="form-label">Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-envelope text-primary"></i>
+                                    <i class="fas fa-envelope" style="color: rgb(39, 19, 19);"></i>
                                 </span>
                                 <input type="email" 
                                        class="form-control border-start-0 @error('email') is-invalid @enderror" 
@@ -41,7 +41,7 @@
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-lock text-primary"></i>
+                                    <i class="fas fa-lock" style="color: rgb(39, 19, 19);"></i>
                                 </span>
                                 <input type="password" 
                                        class="form-control border-start-0 @error('password') is-invalid @enderror" 
@@ -62,17 +62,17 @@
                                 <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label for="remember" class="text-muted">Keep me signed in</label>
                             </div>
-                            <a href="#" class="text-decoration-none small text-primary">Forgot Password?</a>
+                            <a href="#" class="text-decoration-none small" style="color: rgb(39, 19, 19);">Forgot Password?</a>
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 8px;">
+                            <button type="" class="btnn" style="border-radius: 8px;  background-color: rgb(39, 19, 19); color:white; padding: 0.8rem; font-size: 1.2rem;">
                                 <i class="fas fa-sign-in-alt me-2"></i>Login
                             </button>
                         </div>
 
                         <div class="text-center">
-                            <p class="small text-muted">Don't have an account? <a href="{{ route('signup') }}" class="fw-bold text-primary">Sign Up</a></p>
+                            <p class="small text-muted">Don't have an account? <a href="{{ route('signup') }}" class="fw-bold" style="color: rgb(39, 19, 19);">Sign Up</a></p>
                         </div>
                     </form>
                 </div>
@@ -90,14 +90,7 @@
         box-shadow: none;
         border-color: #4e73df;
     }
-    .btn-primary {
-        background-color: #4e73df;
-        border: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .btn-primary:hover {
-        background-color: #375a7f;
-        transform: translateY(-2px);
-    }
+
+
 </style>
 @endpush
