@@ -33,7 +33,7 @@ class ProductController extends Controller
         }
 
         // Return the view with the filtered products
-        return view('product.dashboard', compact('products'));
+        return view('product.dashboard', compact('products'));  
     }
 
     public function createForm()
