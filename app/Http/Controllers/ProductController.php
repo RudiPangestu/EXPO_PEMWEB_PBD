@@ -26,6 +26,19 @@ class ProductController extends Controller
         return view('product.create');
     }
 
+    public function login()
+    {
+        return view('user.login');
+    }
+    public function profile()
+    {
+        return view('user.profile');
+    }
+
+    public function signup()
+    {
+        return view('user.signup');
+    }
     public function sendData(Request $request)
     {
         // Validation

@@ -7,6 +7,16 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get("/signup", [ProductController::class, 'signup'])->name('signup');
+Route::get("/login", [ProductController::class, 'login'])->name('login');
+Route::get("/profile", [ProductController::class, 'profile'])->name('profile');
+
+
+Route::get("/signup", [ProductController::class, 'signup'])->name('signup');
+Route::get("/login", [ProductController::class, 'login'])->name('login');
+Route::get("/profile", [ProductController::class, 'profile'])->name('profile');
+
+
 Route::get("/dashboard", [ProductController::class, 'index'])->name('product.index');
 Route::delete('/product/delete/{id}', [ProductController::class, 'deleteData'])->name('api.destroy');
 Route::get('/product/create', [ProductController::class, 'createForm'])->name('product.create');
