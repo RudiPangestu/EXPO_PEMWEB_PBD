@@ -1,170 +1,279 @@
-@extends('layoutes.main')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna Marketplace</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: rgb(39, 19, 19);
+            --secondary-color: #2ecc71;
+            --background-light: #f7f9fc;
+            --text-dark: rgb(39, 19, 19);
+            --card-bg: #ffffff;
+        }
+
         body {
-            background-color: #f4f6f9;
+            background-color: var(--background-light);
+            font-family: 'Inter', 'Arial', sans-serif;
+            color: rgb(39, 19, 19);
         }
-        .card {
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .card:hover {
-            transform: translateY(-5px);
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color), #5b3cc4);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .card-header {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            background-image: linear-gradient(to right, #4e73df 0%, #224abe 100%);
+
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .list-group-item {
-            border-radius: 8px;
-            margin: 5px 0;
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
         }
-        .list-group-item:hover {
-            background-color: #f8f9fa;
-            transform: translateX(10px);
-        }
-        .profile-avatar {
-            transition: transform 0.3s ease;
-        }
-        .profile-avatar:hover {
-            transform: scale(1.1);
-        }
-        .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 12px;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .stat-card {
-            border-radius: 12px;
-            background-color: #f8f9fa;
-            transition: transform 0.3s ease;
-        }
-        .stat-card:hover {
+
+        .profile-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            color: rgb(39, 19, 19);
+            border-bottom: 2px solid rgb(39, 19, 19);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: rgb(39, 19, 19);
+        }
+
+        .nav-custom {
+            flex-direction: column;
+        }
+
+        .nav-custom .nav-link {
+            color: rgb(39, 19, 19);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-custom .nav-link:hover,
+        .nav-custom .nav-link.active {
+            background-color: rgb(39, 19, 19);
+            color: white;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f1f3f5;
+            transition: background-color 0.3s ease;
+            color: rgb(39, 19, 19);
+        }
+
+        .order-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card .card-text {
+            color: rgb(39, 19, 19);
+        }
+
+        .profile-container a {
+            color: rgb(39, 19, 19);
+        }
+
+        .profile-container a:hover {
+            color: rgb(59, 29, 29);
         }
     </style>
-    
-    <div class="container-fluid px-4 py-4">
-        <div class="row g-4">
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <div class="card border-0 shadow-lg mb-4">
-                    <div class="card-header text-white py-3">
-                        <h5 class="card-title mb-0 d-flex align-items-center">
-                            <i class="fas fa-bars me-2"></i> Navigation Menu
-                        </h5>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="list-group list-group-flush">
-                            <a href="" class="list-group-item list-group-item-action d-flex align-items-center">
-                                <i class="fas fa-tachometer-alt me-3"></i> Dashboard
-                            </a>
-                            <a href="{" class="list-group-item list-group-item-action active d-flex align-items-center">
-                                <i class="fas fa-user me-3"></i> Profile
-                            </a>
-                        </div>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center">
+                    <img src="{{ asset('images/user-avatar.jpg') }}" alt="Foto Profil" class="profile-avatar mb-3">
+                </div>
+                <div class="col-md-9">
+                    <h1 class="mb-2">Muhammad Rizki Pratama</h1>
+                    <p class="mb-3">Pembeli Aktif | Bergabung sejak Januari 2023</p>
+                    <div>
+                        <button class="btn btn-light me-2">
+                            <i class="fas fa-edit me-2"></i>Edit Profil
+                        </button>
+                        <button class="btn btn-outline-light">
+                            <i class="fas fa-cog me-2"></i>Pengaturan
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Main Content -->
-            <div class="col-md-9">
-                <!-- Profile Section -->
-                <div class="card border-0 shadow-lg mb-4">
-                    <div class="card-header text-white d-flex justify-content-between align-items-center py-3">
-                        <h4 class="mb-0">
-                            <i class="fas fa-user me-2"></i> Profile Details
-                        </h4>
-                        <a href="" class="btn btn-light btn-sm shadow-sm" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt me-2"></i> Logout
-                        </a>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <h4 class="section-title">Statistik Pengguna</h4>
+                    <div class="quick-stats mb-3">
+                        <div class="stat-item">
+                            <h5>25</h5>
+                            <small>Total Pesanan</small>
+                        </div>
+                        <div class="stat-item">
+                            <h5>20</h5>
+                            <small>Selesai</small>
+                        </div>
+                        <div class="stat-item">
+                            <h5>5</h5>
+                            <small>Proses</small>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <img src="" 
-                             class="rounded-circle shadow-lg mb-3 profile-avatar" 
-                             style="width: 180px; height: 180px; object-fit: cover;" 
-                             alt="User Avatar">
-                        <h2 class="fw-bold mb-2"></h2>
-                        <p class="text-muted mb-4"></p>
+
+                    <nav class="nav nav-custom">
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-shopping-bag me-2"></i>Daftar Pesanan
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-star me-2"></i>Ulasan Saya
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-heart me-2"></i>Produk Favorit
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-cogs me-2"></i>Pengaturan Akun
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="profile-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="section-title mb-0">Riwayat Pesanan</h4>
+                        <a href="#" class="text-primary">Lihat Semua</a>
+                    </div>
+
+                    <div class="order-list">
+                        <div class="order-item">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Pesanan #INV-2024-001</h6>
+                                <small class="text-muted">14 Des 2024 | 3 Produk</small>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-success">Selesai</span>
+                                <strong class="ms-2">Rp 250.000</strong>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary ms-3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="order-item">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Pesanan #INV-2024-002</h6>
+                                <small class="text-muted">10 Des 2024 | 2 Produk</small>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-warning">Proses</span>
+                                <strong class="ms-2">Rp 150.000</strong>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary ms-3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Product Statistics -->
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card stat-card border-0 text-center">
-                            <div class="card-body">
-                                <h6 class="text-muted mb-2">Total Products</h6>
-                                <h4 class="fw-bold text-primary"></h4>
-                            </div>
-                        </div>
+                <div class="profile-card mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="section-title mb-0">Produk Favorit</h4>
+                        <a href="#" class="text-primary">Lihat Semua</a>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card stat-card border-0 text-center">
-                            <div class="card-body">
-                                <h6 class="text-muted mb-2">Total Product Value</h6>
-                                <h4 class="fw-bold text-success">
-                                    
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card stat-card border-0 text-center">
-                            <div class="card-body">
-                                <h6 class="text-muted mb-2">Unique Categories</h6>
-                                <h4 class="fw-bold text-warning">
-                              
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Your Products -->
-                <div class="card border-0 shadow-lg">
-                    <div class="card-header text-white d-flex justify-content-between align-items-center py-3">
-                        <h4 class="mb-0">
-                            <i class="fas fa-box-open me-2"></i> Your Products
-                        </h4>
-                        <a href="" class="btn btn-light btn-sm shadow-sm">
-                            <i class="fas fa-plus me-2"></i> Add New Product
-                        </a>
-                    </div>
-                    <div class="card-body">
-                      
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="product-card card mb-3">
+                                <img src="{{ asset('images/product-placeholder.jpg') }}" class="card-img-top" alt="Produk">
+                                <div class="card-body">
+                                    <small class="text-muted">Elektronik</small>
+                                    <h6 class="card-title mb-1">Smartphone Canggih</h6>
+                                    <p class="card-text text-primary fw-bold">Rp 3.500.000</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product-card card mb-3">
+                                <img src="{{ asset('images/product-placeholder.jpg') }}" class="card-img-top" alt="Produk">
+                                <div class="card-body">
+                                    <small class="text-muted">Fashion</small>
+                                    <h6 class="card-title mb-1">Jaket Musim Dingin</h6>
+                                    <p class="card-text text-primary fw-bold">Rp 750.000</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product-card card mb-3">
+                                <img src="{{ asset('images/product-placeholder.jpg') }}" class="card-img-top" alt="Produk">
+                                <div class="card-body">
+                                    <small class="text-muted">Olahraga</small>
+                                    <h6 class="card-title mb-1">Sepatu Running</h6>
+                                    <p class="card-text text-primary fw-bold">Rp 1.250.000</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Logout Confirmation Modal -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <p>Are you sure you want to log out?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form action="" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Yes, Logout</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

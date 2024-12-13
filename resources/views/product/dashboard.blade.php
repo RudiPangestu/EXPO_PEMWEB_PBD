@@ -62,10 +62,15 @@
                                             <td>Rp {{ number_format($product['price']?? 0, 2) }}</td>
                                             <td>{{ $product['productDesc'] ?? 'N/A' }}</td>
                                             <td>
-                                                <img src="{{  'storage/'.$product['productImg'] }}" 
-                                                class="img-fluid rounded shadow-sm" style="width: 60px; height: auto;">
-                                           
-                                            </td>                                            
+                                                @if(!empty($product['productImg']))
+                                                    <img src="{{ asset('storage/' . $product['productImg']) }}" 
+                                                         class="img-fluid rounded shadow-sm" 
+                                                         style="width: 60px; height: auto;"
+                                                         onerror="this.onerror=null; this.src='{{ asset('default-image.png') }}'">
+                                                @else
+                                                    <span>No Image</span>
+                                                @endif
+                                            </td>                                           
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="{{ route('product.edit', $product['productId']) }}" class="btn btn-sm btn-outline-warning">

@@ -65,20 +65,20 @@ class ProductController extends Controller
 
         // Handle file upload
         if ($request->hasFile('productImg')) {
-            // Generate a unique filename and store the image in the 'public/images' directory
-            $path = $request->file('productImg')->storeAs('images', time() . '_' . $request->file('productImg')->getClientOriginalName(), 'public');
+            // Gunakan method store dengan visibility publik
+            $path = $request->file('productImg')->store('images', 'public');
             $data['productImg'] = $path;
         }
 
         try {
-            $response = Http::post('http://localhost:8069/products', $data);
+            $response = Http::post('http://localhost:5058/api/Products', $data);
 
             if ($response->successful()) {
                 return redirect()->route('product.index')->with('success', 'Product added successfully!');
             } else {
                 return redirect()->back()->withErrors(['error' => 'Failed to add product: ' . $response->body()]);
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $e) { 
             return redirect()->back()->withErrors(['error' => 'An unexpected error occurred: ' . $e->getMessage()]);
         }
     }

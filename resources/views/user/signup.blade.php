@@ -176,7 +176,7 @@
                         </div>
 
                         <div class="text-center">
-                            <p class="small text-muted">Already have an account? <a href="{{ route('login') }}" class="fw-bold text-brown">Login</a></p>
+                            <p class="small text-muted">Already have an account? <a href="{{ route('login') }}" class="fw-bold text-brown"style="color: rgb(39, 19, 19);">Login</a></p>
                         </div>
                     </form>
                 </div>
