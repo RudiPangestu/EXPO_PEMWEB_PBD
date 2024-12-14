@@ -26,3 +26,4 @@ Route::post('/product/store', [ProductController::class, 'sendData'])->name('api
 Route::get('/product/edit/{id}', [ProductController::class, 'editForm'])->name('product.edit');
 Route::put('/product/put/{id}', [ProductController::class, 'updateData'])->name('api.put');
 
+    

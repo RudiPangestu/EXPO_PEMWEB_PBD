@@ -6,18 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marketplace Pengrajin Lokal</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
 </head>
 <body>
   <header>
     <nav>
-      <img src="img/logo.png" alt="Travelo" class="logo">
+      <img src="img/logoW.png" alt="Travelo" class="logo">
       <ul>
         <li>
-          <a href="#">Login</a>
+          <a href="{{ route('login') }}">Login</a>
         </li>
         <li>
-          <a href="#">Sign Up</a>
+          <a href="{{ route('signup') }}">Sign Up</a>
         </li>
         <li class="search">
           <a href="#">
