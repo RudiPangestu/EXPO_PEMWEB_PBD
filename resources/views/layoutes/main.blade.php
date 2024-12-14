@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Toko Nelson - Product Management System" />
-    <meta name="author" content="Nelson Richie Richardo" />
-    <title>Toko Nelson</title>
+    <meta name="description" content="Marketplace Pengrajin Lokal - Product Management" />
+    <meta name="author" content="TPI" />
+    <title>Marketplace Pengrajin Lokal</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -47,10 +47,10 @@
 </head>
 <body class="sb-nav-fixed">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="{{ route('product.index') }}">
-                <i class="fas fa-store me-2"></i>Toko Nelson
+                <i class="fas fa-store me-2"></i>Marketplace Pengrajin Lokal
             </a>
             <div class="d-flex align-items-center">
                 <!-- Dark Mode Toggle -->
@@ -72,14 +72,20 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> --}}
+
+    <div class="main-logo" style="position: fixed; top: 0; left: 0; padding: 20px;">
+        <a href="#">
+            <img src="images/logow.png" alt="logo" class="img-fluid w-25">
+        </a>
+    </div>
 
     <div id="content">
         <main>
             @yield('content')
         </main>
 
-        <footer class="py-4 bg-light mt-auto">
+        {{-- <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Nelson Richie Richardo - 2331038</div>
@@ -90,7 +96,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
     </div>
 
     <!-- Scripts -->

@@ -9,6 +9,22 @@ use Carbon\Carbon;
 
 class ProductController extends Controller
 {
+    public function home()
+    {
+        $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
+
+        // Send a GET request to the API to fetch all products
+        $response = Http::get('http://localhost:8069/products');
+
+        // Check if the API response is successful
+        if ($response->successful()) {
+            $products = $response->json();
+            return view('index', compact("products"));  
+        }
+
+        // Return the view with the filtered products
+    }
+
     public function index()
     {
         $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
@@ -55,7 +71,7 @@ class ProductController extends Controller
 
         // Prepare data
         $data = [
-            "userId" => Auth::id(),  
+            "userId" => 100000001,  
             "productImg" => null,
             "productName" => $request->productName,
             "productDesc" => $request->productDesc,
@@ -72,7 +88,8 @@ class ProductController extends Controller
         }
 
         try {
-            $response = Http::post('http://localhost:5058/api/Products', $data);
+            $response = Http::post('http://localhost:8069/products', $data);
+            dd($response);
 
             if ($response->successful()) {
                 return redirect()->route('product.index')->with('success', 'Product added successfully!');
