@@ -27,7 +27,7 @@
             </div>
             <!-- Main Content -->
             <div class="col-md-9">
-                <h1 class="mt-4">Toko Nelson</h1>
+                <h1 class="mt-4"></h1>
                 <ol class="breadcrumb mb-4 bg-light p-2 rounded">
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>

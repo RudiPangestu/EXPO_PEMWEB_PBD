@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Toko Nelson</h1>
+        <h1 class="mt-4"></h1>
         <ol class="breadcrumb mb-4 bg-light p-2 rounded">
             <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Edit Product</li>

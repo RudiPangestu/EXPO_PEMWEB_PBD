@@ -7,6 +7,7 @@
     <meta name="description" content="Marketplace Pengrajin Lokal - Product Management" />
     <meta name="author" content="TPI" />
     <title>Marketplace Pengrajin Lokal</title>
+    <base href="/#">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -76,7 +77,7 @@
 
     <div class="main-logo" style="position: fixed; top: 0; left: 0; padding: 20px;">
         <a href="#">
-            <img src="images/logow.png" alt="logo" class="img-fluid w-25">
+            <img src="images/logoW.png" alt="logo" class="img-fluid w-25">
         </a>
     </div>
 

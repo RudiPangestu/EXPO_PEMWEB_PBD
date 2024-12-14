@@ -30,22 +30,14 @@ class ProductController extends Controller
         $userId = session('user'); // Assuming 'user' session contains the user data, adjust as needed
 
         // Send a GET request to the API to fetch all products
-        $response = Http::get('http://localhost:5058/api/Products');
+        $response = Http::get('http://localhost:8069/products');
 
         // Initialize an empty array for products
         $products = [];
 
         // Check if the API response is successful
         if ($response->successful()) {
-            $allProducts = $response->json(); // Get the list of products
-
-            // Filter products that match the logged-in user's ID
-            $products = array_filter($allProducts, function ($product) use ($userId) {
-                return $product['userId'] == $userId; // Adjust the key if needed to match the API response structure
-            });
-
-            // Optionally, re-index the array after filtering
-            $products = array_values($products);
+            $products = $response->json();
         }
 
         // Return the view with the filtered products
@@ -89,7 +81,7 @@ class ProductController extends Controller
 
         try {
             $response = Http::post('http://localhost:8069/products', $data);
-            dd($response);
+            // dd($response);
 
             if ($response->successful()) {
                 return redirect()->route('product.index')->with('success', 'Product added successfully!');
@@ -110,7 +102,7 @@ class ProductController extends Controller
     public function editForm($id)
     {
         // Use double quotes for string interpolation so $id is correctly included in the URL
-        $response = Http::get("http://localhost:5058/api/Products/{$id}");
+        $response = Http::get("http://localhost:8069/products/{$id}");
 
         // Check if the API request was successful
         if ($response->successful()) {
@@ -156,7 +148,7 @@ class ProductController extends Controller
 
         // Send the update request to the API
         try {
-            $response = Http::put("http://localhost:5058/api/Products/{$id}", $data);    
+            $response = Http::put("http://localhost:58.69/products/{$id}", $data);    
 
             if ($response->successful()) {
                 return redirect()->route('product.index')->with('success', 'Product updated successfully!');
@@ -172,7 +164,7 @@ class ProductController extends Controller
     {
         try {
             // Send DELETE request to the API with the product ID
-            $response = Http::delete("http://localhost:5058/api/Products/{$id}");
+            $response = Http::delete("http://localhost:8069/products/{$id}");
 
             // Check if the request was successful
             if ($response->successful()) {

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Toko Nelson</h1>
+        {{-- <h1 class="mt-4">Marketplace</h1> --}}
         <ol class="breadcrumb mb-4 bg-light p-2 rounded">
             <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Add Product</li>
@@ -10,7 +10,7 @@
 
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-primary text-white">
-                <i class="fas fa-plus me-2">Add Product Data</i>
+                <i class="fas fa-plus me-2"> Add Product Data</i>
             </div>
             <div class="card-body">
                 <form action="{{ route('api.post') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
