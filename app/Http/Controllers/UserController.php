@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function landing()
     {
-        return view('user.landingpage');
+        return view('landing');
     }
     public function profile()
     {
@@ -51,7 +51,7 @@ class UserController extends Controller
 
         try {
             // Send the signup data to the external API
-            $response = Http::post('http://localhost:8069/users', $data);
+            $response = Http::post('http://localhost:5058/users', $data);
 
             if ($response->successful()) {
                 // Assuming the API returns user data and a token or session info
@@ -78,7 +78,7 @@ class UserController extends Controller
 
         try {
             // Send the login request to the external API
-            $response = Http::post('http://localhost:8069/auth/login', $data);
+            $response = Http::post('http://localhost:5058/auth/login', $data);
 
             // Check the response body
             // dd($response->body());

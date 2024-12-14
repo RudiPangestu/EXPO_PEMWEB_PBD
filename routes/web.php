@@ -4,7 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [ProductController::class, 'home'])->name("home");
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/landing', function () {
+    return view('landing');
+});
 
 Route::get("/signup", [UserController::class, 'signupForm'])->name('signup');
 Route::post("/signup", [UserController::class, 'signupData'])->name('signup.post');
