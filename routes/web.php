@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/index', [ProductController::class, 'home']);
 
 Route::get('/landing', function () {
     return view('landing');
