@@ -13,7 +13,7 @@ Route::get("/login", [UserController::class, 'loginForm'])->name('login');
 Route::post("/login", [UserController::class, 'loginData'])->name('login.post');
 
 Route::get("/profile", [UserController::class, 'profile'])->name('user.profile')->middleware('auth');
-
+Route::get("/landing", [UserController::class, 'landing'])->name('landing');
 
 Route::get("/dashboard", [ProductController::class, 'index'])->name('product.index');
 Route::delete('/product/delete/{id}', [ProductController::class, 'deleteData'])->name('api.destroy');

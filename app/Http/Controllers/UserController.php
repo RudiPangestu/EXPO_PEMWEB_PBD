@@ -14,6 +14,10 @@ class UserController extends Controller
         return view('user.login');
     }
 
+    public function landing()
+    {
+        return view('user.landingpage');
+    }
     public function profile()
     {
         return view('user.profile');
